@@ -1,8 +1,10 @@
 # H2:
 
-A2
 
-Authentication bypasses: Tutkitaan sivuston HTML-koodia inspectorilla ja kokeillaan manuaalisesti vaihtaa kysymysten muuttujat:
+
+*A2 - Authentication bypasses:
+
+Tutkitaan sivuston HTML-koodia inspectorilla ja kokeillaan manuaalisesti vaihtaa kysymysten muuttujat:
     
     "secQuestion0" ja "secQuestion1" => "secQuestion2" ja "secQuestion3"
 
@@ -11,7 +13,7 @@ Näitä todennäköisesti ei ole olemassa, ja näiden arvoiksi "test".
 Toimii. 
 En kyllä osaa hahmottaa miksi, kyllähän sivuston pitäisi osata tarkistaa invalidit muuttujat myös?
 
-Secure passwords:
+*Secure passwords:
 
 käytän salasanan sijaan "salalausetta" ja yleensä suomeksi.
 
@@ -19,9 +21,7 @@ käytän salasanan sijaan "salalausetta" ja yleensä suomeksi.
     Score: 4/4
     Estimated cracking time: 292471208677 years 195 days 15 hours 30 minutes 7 secondsScore: 4/5 
 
-A3
-
-Insecure Login:
+*A3 -Insecure Login:
 
 Käynnistetään Wireshark loopback-asetuksella.
 Painoin login-nappulaa ja menen wiresharkkiin etsimään HTTP-protokollalla POST-viestiä.
@@ -30,9 +30,7 @@ viimeinen rivi näyttää epäilyttävältä:
     
     {"username":"CaptainJack","password":"BlackPearl"}.
 
-A7
-
-Try It! Reflected XSS:
+*A7 - Try It! Reflected XSS:
 
 Kokeilin kirjoittaa kaikkiin mahdollisiin input-kenttiin <script>alert('foo');</script> ja luottokorttinumerossa tämä toimi.
 
@@ -61,11 +59,9 @@ Lueskelin uudestaan tuon sivuston ohjeen liittyen urliin. Jos start.mvc#lesson/ 
 jälkeen tuleva "CrossSiteScripting.lesson/9" on parametri, 
 niin aijemmin GoatRouterista löytynyt tavara sisältää tekstin ":param". Voisin tätä kokeilla seuravaavaa:
 
-start.mvc#test/
+        start.mvc#test/
 
-A8
-
-Cross-Site Request Forgeries:
+*A8 -Cross-Site Request Forgeries:
 
 Laitoin ohjeen mukaan http-serverin päälle: python3 -m http.server 
 ja tein html-tiedoston johon kopioin webgoatista inspectorilla submit-napin form-tägin:
@@ -82,12 +78,12 @@ mutta editoin action="" kohdan siten että lisäsin täyden urlin actionin eteen
 
 navigoin tuolle html-tiedostolle ja painoin nappia, jolloin toi action palautti tarvittavan numeron.
 
-Post a review on someone else’s behalf:
+*Post a review on someone else’s behalf:
 
 kokeilen samaa tekniikkaa kuin yllä mutta kopioin myös input-kenttien htll-koodin, ja vaihdan actionin urlin yllämainitulla tavalla.
 Tämä onnistui "osittain", sillä webgoatin sivua päivitettäessä sinne ilmestyi rivi:
 
-"petteri / null stars"
+        "petteri / null stars"
 
 ja pitkään aikaan en onnistunut replikoimaan tätä kunnes huomasin etten ollut laittanut actionin endpointtiin "http://".
 sitten lähti toimimaan
