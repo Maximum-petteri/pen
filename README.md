@@ -1,8 +1,32 @@
+# H1
+
+HTTP Basics
+
+Go!-nappula lähettää POST-requestin, jota voidaan tarkistella devtoolssien Network-tabilla.
+Requestin sisältä löytyy kolme arvoa, joista yksi on magic_num.
+Developer tools
+
+4: Ajetaan webgoat.customjs.phoneHome() funktio devtoolssin console-tabilla, joka palauttaa tekstin "Response is xxxxx.
+6: Go!-nappi lähettää POST-requestin, jonka sisällöstä löydetään muttuja networkNum.
+CIA-triad
+
+1: 3.
+2: 1.
+3: 4.
+4: 2.
+
+Darknet Diaries Ep. 52 Magecart
+
+Mielenkiintoinen episodi jossa käsitellään luottokorttiskimmausta netissä.
+Skimmausmekanismina ollaan käytetty muutamaa riviä javaScriptiä, joka lähettää luottokorttitiedot eteenpäin parsittavaksi.
+Kyseinen javaScript-koodi on istutettu tiedostoon joka käsittelee sekä nettisivun, että mobiiliaplikaation ostot.
+Magecartista kärsineet nimekkäimmät nettisivut olivat brittishairways.com ja newegg.com.
+
+
+
 # H2:
 
-
-
-*A2 - Authentication bypasses:
+A2 - Authentication bypasses:
 
 Tutkitaan sivuston HTML-koodia inspectorilla ja kokeillaan manuaalisesti vaihtaa kysymysten muuttujat:
     
@@ -13,7 +37,7 @@ Näitä todennäköisesti ei ole olemassa, ja näiden arvoiksi "test".
 Toimii. 
 En kyllä osaa hahmottaa miksi, kyllähän sivuston pitäisi osata tarkistaa invalidit muuttujat myös?
 
-*Secure passwords:
+Secure passwords:
 
 käytän salasanan sijaan "salalausetta" ja yleensä suomeksi.
 
@@ -21,7 +45,7 @@ käytän salasanan sijaan "salalausetta" ja yleensä suomeksi.
     Score: 4/4
     Estimated cracking time: 292471208677 years 195 days 15 hours 30 minutes 7 secondsScore: 4/5 
 
-*A3 -Insecure Login:
+A3 -Insecure Login:
 
 Käynnistetään Wireshark loopback-asetuksella.
 Painoin login-nappulaa ja menen wiresharkkiin etsimään HTTP-protokollalla POST-viestiä.
@@ -30,7 +54,7 @@ viimeinen rivi näyttää epäilyttävältä:
     
     {"username":"CaptainJack","password":"BlackPearl"}.
 
-*A7 - Try It! Reflected XSS:
+A7 - Try It! Reflected XSS:
 
 Kokeilin kirjoittaa kaikkiin mahdollisiin input-kenttiin <script>alert('foo');</script> ja luottokorttinumerossa tämä toimi.
 
@@ -61,7 +85,7 @@ niin aijemmin GoatRouterista löytynyt tavara sisältää tekstin ":param". Vois
 
         start.mvc#test/
 
-*A8 -Cross-Site Request Forgeries:
+A8 -Cross-Site Request Forgeries:
 
 Laitoin ohjeen mukaan http-serverin päälle: python3 -m http.server 
 ja tein html-tiedoston johon kopioin webgoatista inspectorilla submit-napin form-tägin:
@@ -78,7 +102,7 @@ mutta editoin action="" kohdan siten että lisäsin täyden urlin actionin eteen
 
 navigoin tuolle html-tiedostolle ja painoin nappia, jolloin toi action palautti tarvittavan numeron.
 
-*Post a review on someone else’s behalf:
+Post a review on someone else’s behalf:
 
 kokeilen samaa tekniikkaa kuin yllä mutta kopioin myös input-kenttien htll-koodin, ja vaihdan actionin urlin yllämainitulla tavalla.
 Tämä onnistui "osittain", sillä webgoatin sivua päivitettäessä sinne ilmestyi rivi:
