@@ -26,6 +26,30 @@ Magecartista kärsineet nimekkäimmät nettisivut olivat brittishairways.com ja 
 
 # H2:
 
+OWASP:
+
+A2 - Broken authentication
+
+Sivusto on altis hyökkäykselle kun se:
+• mahdollistaa automaatisen autentikoinnin, jolloin voidaan kokeilla listasta suosittuja salasanoja ja käyttäjänimiä
+• mahdollistaa brute force-hyökkäyksen
+• ei palauta käyttäjälle tietoa salasanan vahvuudesta
+• ei vaihda sessio-id:tä tarpeeksi usein
+
+A3 - Sensitive data exposure
+
+Sivusto on altis hyökkäykselle kun se:
+• lähettää salattavaa tietoja clear textinä
+• tallentaa salattavaa tietoja kantaan clear textinä
+• käyttää vanhentuneita enkryptaus metodeita
+
+A7 - Cross-site scripting
+
+• sivusto/api mahdollistaa käyttäjän "siivoamattoman" inputin ajamisen
+• sivusto/api tallentaa käyttäjän siivoamattoman inputin joka tulee muille käyttäjille näkyväksi/ajettavaksi
+
+Webgoat
+
 A2 - Authentication bypasses:
 
 Tutkitaan sivuston HTML-koodia inspectorilla ja kokeillaan manuaalisesti vaihtaa kysymysten muuttujat:
