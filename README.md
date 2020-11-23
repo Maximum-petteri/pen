@@ -177,6 +177,22 @@ Tämä näyttää wiresharkissa täysin vastaavalta kuin -sS asetuksella ajettu.
         
 Palauttaa kyseisen palvelun softan nimen, tässä tapauksessa Apache httpd. Wiresharkissa tapahtuu liikaa tämän kyselyn ansiosta.
 
+        -p1-100, --top-ports 5
+        
+Palauttaa "suosituimmat" 5 porttia ikkunalla 1-80.
+
+        -oA foo
+        
+Tallentaa skannauksen tuloksen foo.gnmap, nmap ja xml -tiedostoihin.
+
+HackTheBox
+
+Avaan vpn-yhteyden komennolla sudo openvpn [nimi].ovpn ja menen htb sivustolle "access" osioon jossa näkyy että olen yhdistettynä htb lab -verkkoon.
+Tarkistan verkon ip-osoitteen sivustolta joka näyttää olevan 10.10.14.xx.
+Ajan sudo nmap -sS 10.10.14.1/24
+
+hmm nyt jotain menee pieleen. :(
+        
 
         
         
