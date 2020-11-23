@@ -138,16 +138,16 @@ sitten lähti toimimaan
 
 # H3
 
-Active recon:
+## Active recon:
 
-• porttiskannaus
-    nmap: suosituin porttiskannaussofta
-    masscan: nopein skannata isoja määriä ip-osoitteita
-    udpprotoscanner: UDP porttiskanneri
-• haavoittuvuusskannaus
-    nmap --script vuln
+* porttiskannaus
+    * nmap: suosituin porttiskannaussofta
+    * masscan: nopein skannata isoja määriä ip-osoitteita
+    * udpprotoscanner: UDP porttiskanneri
+* haavoittuvuusskannaus
+    * nmap --script vuln
     
-Nmap
+## Nmap
 
 Kokeilen skannata tiedostopalveintani, jonka osoitteen asetan wiresharkissa valmiiksi filtteriksi.
 
@@ -158,6 +158,8 @@ Tämä suorittaa ns. "three way handshaken", eli wiresharkissa näkyy kolme pake
         Minä - Heippa, olis vähän asiaa portilla 80, ookkonää hereillä [SYN] 
         Servu - Moikka, joo oon mää täällä whassup? [SYN, ACK]
         Minä - Hei hieno juttu hei! [ACK]
+        
+
         
 Sitten kokeillaan vähän salakavalampaa tapaa
 
