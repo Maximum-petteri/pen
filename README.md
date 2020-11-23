@@ -135,3 +135,48 @@ Tämä onnistui "osittain", sillä webgoatin sivua päivitettäessä sinne ilmes
 
 ja pitkään aikaan en onnistunut replikoimaan tätä kunnes huomasin etten ollut laittanut actionin endpointtiin "http://".
 sitten lähti toimimaan
+
+# H3
+
+Active recon:
+
+• porttiskannaus
+    nmap: suosituin porttiskannaussofta
+    masscan: nopein skannata isoja määriä ip-osoitteita
+    udpprotoscanner: UDP porttiskanneri
+• haavoittuvuusskannaus
+    nmap --script vuln
+    
+Nmap
+
+Kokeilen skannata tiedostopalveintani, jonka osoitteen asetan wiresharkissa valmiiksi filtteriksi.
+
+        -sT -p 80 [ip osoite]
+
+Tämä suorittaa ns. "three way handshaken", eli wiresharkissa näkyy kolme pakettia, [SYN], [SYN, ACK] ja [ACK]. Eli keskuetelu menisi about näin:
+        
+        Minä - Heippa, olis vähän asiaa portilla 80, ookkonää hereillä [SYN] 
+        Servu - Moikka, joo oon mää täällä whassup? [SYN, ACK]
+        Minä - Hei hieno juttu hei! [ACK]
+        
+Sitten kokeillaan vähän salakavalampaa tapaa
+
+        -sS -p 80 [ip osoite]
+        
+Tämä käytännössä tiputtaa yllämainitusta keskustelusta viimeisen minun lähettämän ACK-paketin, jolloin palvelinten palomuurit ei ehkä kiinnitä huomiota tähän kun "täyttä yhteyttä" ei saavutettu?
+
+        -sN  -p 80 [ip osoite]
+        
+Wireshark näyttää että kaksi pakettia ilman mitään asetuksia olisi lähtenyt koneeltani, paketin headeri on tyhjä. En tiedä mitä tämä auttaa.
+
+        -Pn -p 80 [ip osoite]
+        
+Tämä näyttää wiresharkissa täysin vastaavalta kuin -sS asetuksella ajettu.
+
+        -sV -p 80 [ip osoite]
+        
+Palauttaa kyseisen palvelun softan nimen, tässä tapauksessa Apache httpd. Wiresharkissa tapahtuu liikaa tämän kyselyn ansiosta.
+
+
+        
+        
