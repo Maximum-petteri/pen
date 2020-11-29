@@ -273,7 +273,11 @@ Sitten asensin gobusterin, mutta totesin että minun pitää asentaa myös wordl
 
 ![Screenshot from 2020-11-30 01-31-41](https://user-images.githubusercontent.com/54954455/100556761-31baf880-32ad-11eb-8833-d19e07b2d577.png)
 
+Tämän jälkeen kurkkasin mitä tohon output-tiedostoon oli kirjoitettu:
 
+![Screenshot from 2020-11-30 01-44-31](https://user-images.githubusercontent.com/54954455/100556822-a42bd880-32ad-11eb-9602-e1cf49bb3ed7.png)
+
+Tämä ei hirveästi avannut minulle gobusterin toimintaa.
 
 
 
