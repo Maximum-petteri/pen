@@ -194,6 +194,18 @@ Tarkistan verkon ip-osoitteen sivustolta joka näyttää olevan 10.10.14.xx.
 Ajan sudo nmap -sS 10.10.14.1/24
 
 hmm nyt jotain menee pieleen. :(
+
+# H4 Walkthrough
+
+## z) Lue artikkelit ja katso videot, tee kustakin muistiinpanot (muutama ranskalainen viiva per artikkeli/video).
+
+## a) Etsi ja kokeile 5 uutta työkalua jostain lukemastasi/katsomastasi läpikävelystä.
+
+## b) Tiedustele ja analysoi 5 htb konetta perusteellisesti.
+
+## c) Nimeä 1-3 walktrough:ta, joissa tunkeudutaan samantapaisiin palveluihin, joita käsittelit kohdassa b.
+
+
         
 
         
