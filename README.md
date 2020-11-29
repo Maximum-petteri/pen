@@ -224,7 +224,10 @@ ajautuu umpikujaan. Muutamia uusia työkaluja mitä tästä videosta jäi mielee
 * Hashcat (ssh kracken?)
 * Cisco Type 7 password decrypter
 * Evil winrm
- 
+
+### HackTheBox - Buff (https://www.youtube.com/watch?v=-KBm3tBNK74)
+
+
 
 ## a) Etsi ja kokeile 5 uutta työkalua jostain lukemastasi/katsomastasi läpikävelystä.
 
