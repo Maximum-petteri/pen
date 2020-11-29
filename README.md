@@ -201,30 +201,29 @@ hmm nyt jotain menee pieleen. :(
 
 ### HackTheBox - Heist (https://www.youtube.com/watch?v=fmBb6BgLsC8)
 
-nmap -sC- sV -oA nmap/heist ip
+Katsoin kyseisen videon koska se oli tarkoitettu alunperin helpoksi kohteeksi, mutta hyvin pian putosin kärryiltä hetkeksi.
+Videolla käytettiin paljon uusia työkaluja joista en ollut kuullut. Alun tiedustelu suoritettiin nmapilla ajamalla
+        
+        nmap -sC- sV -oA [ip]
+        
+Eli tässä ajettiin vain default scriptat ja kaivettiin mahdollisten palveluiden versiot softista tiedostoon.
+Ymmärsin mitä tässä tapahtuu aina siihen asti kunnes ruvettiin ajelemaan crackmapexec ja metasploittua jotta saataisiin aikaiseksi winRM logini.
+Lopullinen korkkaus saatiin aikaiseksi ymmärtääkseni seuraavasti:
 
-portit 80 ms iis v. 10.0
-cookie flags
-PHPSESSID <- ?? ms ajaisi yleensä asp
-login.php
+* katsottiin mitä softaa palvelimella oli asennettu ja löydettiin Firefox
+* luettiin Firefoxilla ajetut prosessit ja niiden IDt
+* ladattiin microsoftin sysinternals suite
+* upittiin edellämainitusta palvelimella korkatun käyttäjän hakemistoon procdum64.exe
+* tämä ajamalla saatiin tehtyä Firefoxin prosessista tiedosto, jota lukemalla selvisi admin salasana.
+    
+Tässä oli todella paljon asioita mitä en ole käynyt läpi ja tämä oli hämmentävää katsottavaa varsinkin kun videolla selostaja itse
+ajautuu umpikujaan. Muutamia uusia työkaluja mitä tästä videosta jäi mieleen oli:
 
-->tsekataan portti 80 ip/login.php
-
-Cisco type 7 passowrd decrypter
-hashcat
-crackmapexec
-metasploit -> winRM login
-
-
-evil winrm
-hashes.org
-
-upmpikuja. firefox prosessit dumpataan
-
-ms sysinternals suite
-
-upitaan procdump64 remoteshelliin
-procdumpilla dumpataan firefoxin prosessi ja ladataan se tarkisteltavaksi
+* Metasploit
+* Crackmapexec
+* Hashcat (ssh kracken?)
+* Cisco Type 7 password decrypter
+* Evil winrm
  
 
 ## a) Etsi ja kokeile 5 uutta työkalua jostain lukemastasi/katsomastasi läpikävelystä.
