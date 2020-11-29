@@ -227,7 +227,39 @@ ajautuu umpikujaan. Muutamia uusia työkaluja mitä tästä videosta jäi mielee
 
 ### HackTheBox - Buff (https://www.youtube.com/watch?v=-KBm3tBNK74)
 
+Ajattelin katsoa tämän kyseisen palvelimen korkkaamisen, kun tämä oli se mitä katseltiin oppitunneillakin niin jäi kiinnostamaan.
+Lopputulos kumminkin oli se, etten itse olisi kylläkään keksinyt jo opituilla taidoilla miten tämän saisi korkattua. Video oli pitkä ja jälleen putosin täysin kärryiltä kun tässä on niin monta tmux-ikkunaa auki, että tätä oli vaikea seurata. Kumminkin mieleen jäi joitain tekniikoita ja työkaluja.
 
+Palveimen avointen porttien tiedustelu alkoi samalla tavalla kuin edellisenkin:
+
+    sudo nmap -v -sC -sV -oA nmap/buff 10.10.10.198
+    
+Sitten ajettiin taustalla gobuster, mutta tämän tuottamia tietoja ei kai käytetty missään vaiheessa:
+
+    gobuster dir -u http://10.10.10.198:8080/ -w /opt/SecLists/Discovery/Web-Content/raft-small-words.txt -x php -o gobustet.out
+
+Mielenkiintoinen kikka oli kokeilla ladata wgetillä nettisivuilta bannerin kuva, ja katsoa exiftoolilla kuvan tietoa. Analyysillä pystyttiin esim. kertomaan milloin kuva on asetettu palvelimelle ja tästä voitaisiin päätellä onko framework vanhentunut tms.
+
+Selattiin palvelimella eri sivuja jos löytyisi nimiä, joita kokella loginiin, mutta löydettiin millä sivusto on tehty: Gym management software 1.0 ja 
+kokeillaan etsiä haavoittuvuutta searchsploitilla. 
+
+        searchsploit gym management
+
+Löydetään tälle versiolle haavoittuvuus ja lukastaan mitä koodi tekee. Muokataan python koodia siten että käytetään localhostia proxynä. Sen jälkeen ajetaan python tiedosto urlia vasten.
+
+* Burb suitessa muokattiin ulosmenevä requesti siten että saadaan kiinni sekä GET ja POST shell_excecillä
+* Vaihdetaan ulosmenevät requestit postiksi: tästä ei jää jälkiä apachen access logiin
+* Yritetään saavuttaa reverse shell.. *tässä vaiheessa minä tipahdan kärryiltä*
+* netcat ajettiin kai kohdeserverillä ja tarjottiin powershell yhteyttä hyökkääjälle?
+
+Loppupuolisko videosta oli hyvin hämmentävä, enkä hirveästi kyennyyt seuraamaan mitä tässä tarkalleen tehtiin. Kumminkin poimin uusia työkaluja mitä tutkia mm.
+
+* Gobuster
+* Burb suite
+* Chisel
+* Msfvenom (?)
+* winPEAS ?
+* meterpeter / staged / stageless
 
 ## a) Etsi ja kokeile 5 uutta työkalua jostain lukemastasi/katsomastasi läpikävelystä.
 
