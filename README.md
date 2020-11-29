@@ -271,7 +271,7 @@ Kokeilen ensin tiedustella sisäverkossani tiedostopalvelimen avoimia portteja y
     
 Sitten asensin gobusterin, mutta totesin että minun pitää asentaa myös wordlist. Tässä menikin hetki mutta tajusin asentaa SecLists paketin.
 
-![Alt text](pen/blob/main/Screenshot from 2020-11-30 01-31-41.png?raw=true "Kuva")
+https://raw.githubusercontent.com/Maximum-petteri/pen/main/Screenshot%20from%202020-11-30%2001-31-41.png
 
 
 
