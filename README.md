@@ -263,6 +263,20 @@ Loppupuolisko videosta oli hyvin hämmentävä, enkä hirveästi kyennyyt seuraa
 
 ## a) Etsi ja kokeile 5 uutta työkalua jostain lukemastasi/katsomastasi läpikävelystä.
 
+### Gobuster
+
+Kokeilen ensin tiedustella sisäverkossani tiedostopalvelimen avoimia portteja yllämainitulla tavalla.
+
+    sudo nmap -v -sC -sV -oA asus 192.168.68.105
+    
+Sitten asensin gobusterin, mutta totesin että minun pitää asentaa myös wordlist. Tässä menikin hetki mutta tajusin asentaa SecLists paketin.
+
+
+
+
+
+
+
 ## b) Tiedustele ja analysoi 5 htb konetta perusteellisesti.
 
 ## c) Nimeä 1-3 walktrough:ta, joissa tunkeudutaan samantapaisiin palveluihin, joita käsittelit kohdassa b.
