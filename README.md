@@ -199,6 +199,34 @@ hmm nyt jotain menee pieleen. :(
 
 ## z) Lue artikkelit ja katso videot, tee kustakin muistiinpanot (muutama ranskalainen viiva per artikkeli/video).
 
+### HackTheBox - Heist (https://www.youtube.com/watch?v=fmBb6BgLsC8)
+
+nmap -sC- sV -oA nmap/heist ip
+
+portit 80 ms iis v. 10.0
+cookie flags
+PHPSESSID <- ?? ms ajaisi yleensä asp
+login.php
+
+->tsekataan portti 80 ip/login.php
+
+Cisco type 7 passowrd decrypter
+hashcat
+crackmapexec
+metasploit -> winRM login
+
+
+evil winrm
+hashes.org
+
+upmpikuja. firefox prosessit dumpataan
+
+ms sysinternals suite
+
+upitaan procdump64 remoteshelliin
+procdumpilla dumpataan firefoxin prosessi ja ladataan se tarkisteltavaksi
+ 
+
 ## a) Etsi ja kokeile 5 uutta työkalua jostain lukemastasi/katsomastasi läpikävelystä.
 
 ## b) Tiedustele ja analysoi 5 htb konetta perusteellisesti.
