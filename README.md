@@ -285,7 +285,7 @@ Tiedostopalvelimen hallintasofta näyttäisi olevan Asustor ADM 3.5 niin kokeile
 
 ![Screenshot from 2020-11-30 09-51-18](https://user-images.githubusercontent.com/54954455/100583830-ec6de980-32f3-11eb-8000-b5f4be2e92fa.png)
 
-Ajan 'searchsploit asustor'
+Ajan ´searchsploit asustor´
 
 Searchsploit palauttaa haulle:
 
