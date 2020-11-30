@@ -291,12 +291,124 @@ Searchsploit palauttaa haulle:
 
 ![Screenshot from 2020-11-30 10-00-33](https://user-images.githubusercontent.com/54954455/100583578-8c774300-32f3-11eb-8e58-0394e33cf9f5.png)
 
+Näyttäisi siltä että palvelimella olevalle versiolle ei tällä hetkellä olisi tunnettuja haavoittuvuuksia. Hyvä niin! :)
 
 ## b) Tiedustele ja analysoi 5 htb konetta perusteellisesti.
 
-## c) Nimeä 1-3 walktrough:ta, joissa tunkeudutaan samantapaisiin palveluihin, joita käsittelit kohdassa b.
+### HTB Time (10.10.10.214)
 
+Skannaan nmapilla seuraavan ip:n käyttäen yllä mainittuja menetelmiä:
 
+    sudo nmap -sC -sV -oA htbtime 10.10.10.214
+
+Tämä palauttaa:
+
+    22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+    80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))
+    |_http-server-header: Apache/2.4.41 (Ubuntu)
+    |_http-title: Online JSON parser
+    Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel 
+
+Apache näyttäisi olevan kutakuinkin päivitetty kuin openssh. Tarkistin vielä searchsploitista, mutta en löytänyt mitään. 
+Kokeilen ajaa:
+    
+    sudo nmap -v -script vuln -oA htb_vuln_time 10.10.10.214
+
+Mutta tämäkään ei tuota tulosta. Lähtisin sitten purkamaan tuota selaimen kautta, jossa näyttäisi pyörivän Online JSON Parser.
+
+### HTB APT (10.10.10.213)
+
+    80/tcp  open  http    Microsoft IIS httpd 10.0
+    | http-methods: 
+    |   Supported Methods: OPTIONS TRACE GET HEAD POST
+    |_  Potentially risky methods: TRACE
+    |_http-server-header: Microsoft-IIS/10.0
+    |_http-title: Gigantic Hosting | Home
+    135/tcp open  msrpc   Microsoft Windows RPC
+    Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Tässä olikin jo mielenkiintoisempi skannaus. Goolella sain haettua Cross Site Tracing (https://owasp.org/www-community/attacks/Cross_Site_Tracing), joka liittyy tuohon TRACE-metodiin. Tämä olisi varmasti päälimmäisin asia mitä lähtisin kokeilemaan.
+
+### HTB Laboratory (10.10.10.216)
+
+    22/tcp  open  ssh      OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+    80/tcp  open  http     Apache httpd 2.4.41
+    | http-methods: 
+    |_  Supported Methods: GET HEAD POST OPTIONS
+    |_http-server-header: Apache/2.4.41 (Ubuntu)
+    |_http-title: Did not follow redirect to https://laboratory.htb/
+    443/tcp open  ssl/http Apache httpd 2.4.41 ((Ubuntu))
+    | http-methods: 
+    |_  Supported Methods: GET POST OPTIONS HEAD
+    |_http-server-header: Apache/2.4.41 (Ubuntu)
+    |_http-title: The Laboratory
+    | ssl-cert: Subject: commonName=laboratory.htb
+    | Subject Alternative Name: DNS:git.laboratory.htb
+    | Issuer: commonName=laboratory.htb
+    | Public Key type: rsa
+    | Public Key bits: 4096
+    | Signature Algorithm: sha256WithRSAEncryption
+    | Not valid before: 2020-07-05T10:39:28
+    | Not valid after:  2024-03-03T10:39:28
+    | MD5:   2873 91a5 5022 f323 4b95 df98 b61a eb6c
+    |_SHA-1: 0875 3a7e eef6 8f50 0349 510d 9fbf abc3 c70a a1ca
+    | tls-alpn: 
+    |_  http/1.1
+    Service Info: Host: laboratory.htb; OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+En nyt löydä ainakaan tästä skannauksesta mitään poikkeavaa? Yritin mennä selaimella tonne, mutta selain ei löydä palvelinta.
+Tässä varmaan on asetukset jotenkin pilalla, joka voisi olla ehkä hyökkäysvektori, mutta en osaa päätellä miten sitä lähtisi tekemään.
+
+### HTB OpenKeys (10.10.10.199)
+
+    22/tcp open  ssh     OpenSSH 8.1 (protocol 2.0)
+    | ssh-hostkey: 
+    |   3072 5e:ff:81:e9:1f:9b:f8:9a:25:df:5d:82:1a:dd:7a:81 (RSA)
+    |_  256 64:7a:5a:52:85:c5:6d:d5:4a:6b:a7:1a:9a:8a:b9:bb (ECDSA)
+    80/tcp open  http    OpenBSD httpd
+    |_http-title: Site doesn't have a title (text/html).
+    
+Tässä nyt ei hirveästi infoa tullut. Nimen perusteella korkkaus liittyisi avaimiin mutta nuo hostkeyt ei tietääkseni ole mitenkään poikkeavia. Kokeilin ajaa vielä
+nmappia -A vivulla tohon porttiin 80, jos siitä vaikka saisi lisätietoa:
+
+    80/tcp open  http    OpenBSD httpd
+    |_http-title: Site doesn't have a title (text/html).
+    Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+    Device type: general purpose|firewall
+    Running (JUST GUESSING): OpenBSD 4.X|6.X|5.X|3.X (95%), FreeBSD 10.X|7.X (91%), Cisco AsyncOS 7.X (87%)
+    OS CPE: cpe:/o:openbsd:openbsd:4.4 cpe:/o:openbsd:openbsd:6 cpe:/o:openbsd:openbsd:5 cpe:/o:openbsd:openbsd:3 cpe:/o:freebsd:freebsd:10.0 cpe:/o:freebsd:freebsd:7.0 cpe:/h:cisco:ironport_c650 cpe:/o:cisco:asyncos:7.0.1
+    Aggressive OS guesses: OpenBSD 4.4 - 4.5 (95%), OpenBSD 6.0 - 6.1 (95%), OpenBSD 5.0 - 5.8 (95%), OpenBSD 4.1 (93%), OpenBSD 5.0 (93%), OpenBSD 4.2 (93%), OpenBSD 4.0 (93%), OpenBSD 3.8 - 4.7 (92%), OpenBSD 4.6 (92%), OpenBSD 4.7 (92%)
+    No exact OS matches for host (test conditions non-ideal).
+
+Ei tuokaan mitään totuutta tuottanut :( Searchploit palauttaa liikaa openbsd tuloksia, että tuon puolesta tämä näyttäisi olevan vähän hakuammuntaa.
+
+### HTB Luanne (10.10.10.218)
+
+    22/tcp   open  ssh     OpenSSH 8.0 (NetBSD 20190418-hpn13v14-lpk; protocol 2.0)
+    | ssh-hostkey: 
+    |   3072 20:97:7f:6c:4a:6e:5d:20:cf:fd:a3:aa:a9:0d:37:db (RSA)
+    |   521 35:c3:29:e1:87:70:6d:73:74:b2:a9:a2:04:a9:66:69 (ECDSA)
+    |_  256 b3:bd:31:6d:cc:22:6b:18:ed:27:66:b4:a7:2a:e4:a5 (ED25519)
+    80/tcp   open  http    nginx 1.19.0
+    | http-auth: 
+    | HTTP/1.1 401 Unauthorized\x0D
+    |_  Basic realm=.
+    | http-methods: 
+    |_  Supported Methods: GET HEAD POST
+    | http-robots.txt: 1 disallowed entry 
+    |_/weather
+    |_http-server-header: nginx/1.19.0
+    |_http-title: 401 Unauthorized
+    9001/tcp open  http    Medusa httpd 1.12 (Supervisor process manager)
+    | http-auth: 
+    | HTTP/1.1 401 Unauthorized\x0D
+    |_  Basic realm=default
+    |_http-server-header: Medusa/1.12
+    |_http-title: Error response
+    Service Info: OS: NetBSD; CPE: cpe:/o:netbsd:netbsd
+
+Taaskaan en osaa nyt analysoida tätä oikein. Selain vaatii heti kirjautumista tässä osoitteessa. Silmään pistää kumminkin tuo Medusa (supervisor process manager),
+mutta ainakaan searchsploit ei löydä aiheeseen mitään. Yritin asentaa vielä Metasploitin koska tämä rupeaa olemaan vähän toivotonta, mutta tämäkin ei nyt ihan onnistunut helposti.
         
 
         
