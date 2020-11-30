@@ -277,8 +277,19 @@ Tämän jälkeen kurkkasin mitä tohon output-tiedostoon oli kirjoitettu:
 
 ![Screenshot from 2020-11-30 01-44-31](https://user-images.githubusercontent.com/54954455/100556822-a42bd880-32ad-11eb-9602-e1cf49bb3ed7.png)
 
-Tämä ei hirveästi avannut minulle gobusterin toimintaa.
+Ilmeoisesti löydettiin muutama kansio, mutta näihin ei ainakaan pääse selaimen kautta suoraan.
 
+### Searchsploit
+
+Tiedostopalvelimen hallintasofta näyttäisi olevan Asustor ADM 3.5 niin kokeilen etsiä searchsploitilla sille haavoittuvuutta.
+
+![Screenshot from 2020-11-30 09-51-18](https://user-images.githubusercontent.com/54954455/100583830-ec6de980-32f3-11eb-8000-b5f4be2e92fa.png)
+
+Ajan > searchsploit asustor
+
+Searchsploit palauttaa haulle:
+
+![Screenshot from 2020-11-30 10-00-33](https://user-images.githubusercontent.com/54954455/100583578-8c774300-32f3-11eb-8e58-0394e33cf9f5.png)
 
 
 ## b) Tiedustele ja analysoi 5 htb konetta perusteellisesti.
