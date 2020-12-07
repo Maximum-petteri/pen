@@ -409,7 +409,26 @@ Ei tuokaan mitään totuutta tuottanut :( Searchploit palauttaa liikaa openbsd t
 
 Taaskaan en osaa nyt analysoida tätä oikein. Selain vaatii heti kirjautumista tässä osoitteessa. Silmään pistää kumminkin tuo Medusa (supervisor process manager),
 mutta ainakaan searchsploit ei löydä aiheeseen mitään. Yritin asentaa vielä Metasploitin koska tämä rupeaa olemaan vähän toivotonta, mutta tämäkin ei nyt ihan onnistunut helposti.
-        
 
-        
+
+# H5 Sitting Ducks
+
+## z) Lue artikkelit ja katso videot, tee kustakin muistiinpanot (muutama ranskalainen viiva per artikkeli/video).
+
+### Miksi Metasploit?
+* Avoin lähdekoodi.
+    * Käyttäjillä vapaus lisätä omia moduuleja.
+* Helppokäyttöinen
+    * Voidaan tehdä testejä isoille verkoille nopeasti
+    * Testaamisessa voidaan vaihtaa payloadeja helposti
+* Jättää vähemmän jälkiä
+    * Metasploit ei kaada palveluita yhtä todennäköisesti kuin custom-koodi
+
+(tässä vaiheessa hirveästi ongelmia metasploitin databasen kanssa)
+
+## a) Metasploitable. Asenna Metasploitable 2. Murtaudu sille useilla tavoilla
+
+
+
+
         
