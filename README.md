@@ -490,7 +490,8 @@ Lataan tuon haavoittuvuuden käyttöön ja asetan RHOST ja RPORTS parametrit.
 
 ![Screenshot_2020-12-07_22-35-37](https://user-images.githubusercontent.com/54954455/101402561-934a1b00-38dc-11eb-9f0f-469328b34435.png)
 
+Laitetaan haavoittuvuus ajoon ja maali!
 
-
+![Screenshot_2020-12-07_22-40-03](https://user-images.githubusercontent.com/54954455/101402990-3438d600-38dd-11eb-961f-171988dde953.png)
 
 
