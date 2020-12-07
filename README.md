@@ -482,6 +482,13 @@ valitsin payloadin, mutta metasploit valittaa että en ole asettanut LHOST param
 ![Screenshot_2020-12-07_22-16-59](https://user-images.githubusercontent.com/54954455/101400695-f1c1ca00-38d9-11eb-9a12-fc5c34f92036.png)
 
 Väittäisin että jossain on nyt vikaa. Kokeilin vielä toista payloadia mutta sain saman tuloksen.
+Kokeilen porttia 21. Ensin etsin löytyykö tälle jotain haavoittuvuutta.
+
+![Screenshot_2020-12-07_22-32-12](https://user-images.githubusercontent.com/54954455/101402625-a9f07200-38dc-11eb-81ac-d2472999c9ee.png)
+
+Lataan tuon haavoittuvuuden käyttöön ja asetan RHOST ja RPORTS parametrit.
+
+![Screenshot_2020-12-07_22-35-37](https://user-images.githubusercontent.com/54954455/101402561-934a1b00-38dc-11eb-9f0f-469328b34435.png)
 
 
 
