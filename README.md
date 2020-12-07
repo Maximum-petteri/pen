@@ -428,7 +428,62 @@ mutta ainakaan searchsploit ei löydä aiheeseen mitään. Yritin asentaa vielä
 
 ## a) Metasploitable. Asenna Metasploitable 2. Murtaudu sille useilla tavoilla
 
+Aloitetaan porttiskannauksella metasploitissa:
+
+    db_nmap -sC -sV -oA meta2 192.168.56.101
+
+Ja tämä antaakin paljon kaikkea ihmeteltävää, laitan tähän -sS -sV tuloksen:
+
+    PORT     STATE SERVICE     VERSION
+    21/tcp   open  ftp         vsftpd 2.3.4
+    22/tcp   open  ssh         OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)
+    23/tcp   open  telnet      Linux telnetd
+    25/tcp   open  smtp        Postfix smtpd
+    53/tcp   open  domain      ISC BIND 9.4.2
+    80/tcp   open  http        Apache httpd 2.2.8 ((Ubuntu) DAV/2)
+    111/tcp  open  rpcbind     2 (RPC #100000)
+    139/tcp  open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+    445/tcp  open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+    512/tcp  open  exec        netkit-rsh rexecd
+    513/tcp  open  login
+    514/tcp  open  shell       Netkit rshd
+    1099/tcp open  java-rmi    GNU Classpath grmiregistry
+    1524/tcp open  bindshell   Metasploitable root shell
+    2049/tcp open  nfs         2-4 (RPC #100003)
+    2121/tcp open  ftp         ProFTPD 1.3.1
+    3306/tcp open  mysql       MySQL 5.0.51a-3ubuntu5
+    5432/tcp open  postgresql  PostgreSQL DB 8.3.0 - 8.3.7
+    5900/tcp open  vnc         VNC (protocol 3.3)
+    6000/tcp open  X11         (access denied)
+    6667/tcp open  irc         UnrealIRCd
+    8009/tcp open  ajp13       Apache Jserv (Protocol v1.3)
+    8180/tcp open  http        Apache Tomcat/Coyote JSP engine 1.1
+    MAC Address: 08:00:27:7A:99:C0 (Oracle VirtualBox virtual NIC)   
+    
+Yhdellä silmäyksellä voisi päätellä että tässä olisi paljon kaikkea kivaa tökittävää ja näitä voisi oikeastaan käydä järjestyksessä läpi, mutta huomasin että tuolla on portti 513 auki. Googletan pikaisesti mikä tämä on, ja ilmeisesti tämä on sen verran vanha tekniikka että hakutulokset antaa pelkkiä exploitteja.
+Kokeilen rlogin -l root 192.168.56.101
+
+![Screenshot_2020-12-07_21-45-51](https://user-images.githubusercontent.com/54954455/101397673-ac9b9900-38d5-11eb-9f13-23f8dbb591b7.png)
+
+Telnet-palvelu olisi varmaan seuraava low hanging fruit mutta tuollahan on irkkipalvelin niin katsotaan mitä searchsploit sanoo tohon:
+
+![Screenshot_2020-12-07_21-56-27](https://user-images.githubusercontent.com/54954455/101398663-1a949000-38d7-11eb-9c46-6943a2dbb277.png)
+
+ja kokeillaan vaikka tuota ensimmäistä vaihtoehtoa *UnrealIRCd 3.2.8.1 - Backdoor Command Execution (Metasploit).
+
+![Screenshot_2020-12-07_22-00-42](https://user-images.githubusercontent.com/54954455/101399099-ae665c00-38d7-11eb-9591-9f89c6b7a6b0.png)
+
+Hups, jotain taisi unohtua:
+
+![Screenshot_2020-12-07_22-06-44](https://user-images.githubusercontent.com/54954455/101399729-8d523b00-38d8-11eb-8588-e99cc69240f8.png)
+
+valitsin payloadin, mutta metasploit valittaa että en ole asettanut LHOST parametria.
+
+![Screenshot_2020-12-07_22-16-59](https://user-images.githubusercontent.com/54954455/101400695-f1c1ca00-38d9-11eb-9a12-fc5c34f92036.png)
+
+Väittäisin että jossain on nyt vikaa. Kokeilin vielä toista payloadia mutta sain saman tuloksen.
 
 
 
-        
+
+
