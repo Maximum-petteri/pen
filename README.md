@@ -500,11 +500,12 @@ Laitetaan haavoittuvuus ajoon ja maali!
 
 Helppoa, kaikki on tässä samassa readme-dokumentissa:
 
-https://github.com/Maximum-petteri/pen#h1
-https://github.com/Maximum-petteri/pen#h2
-https://github.com/Maximum-petteri/pen#h3
-https://github.com/Maximum-petteri/pen#h4
-https://github.com/Maximum-petteri/pen#h5
+https://github.com/Maximum-petteri/pen#h1  
+https://github.com/Maximum-petteri/pen#h2  
+https://github.com/Maximum-petteri/pen#h3  
+https://github.com/Maximum-petteri/pen#h4  
+https://github.com/Maximum-petteri/pen#h5  
+
 
 ## c) Tee 5 tiivistettä eri ohjelmilla ja arvaa ne hashcatilla.
 
