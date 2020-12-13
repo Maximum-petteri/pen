@@ -561,7 +561,10 @@ Hashcat antoi minulle linkin artikkeliin https://hashcat.net/wiki/doku.php?id=fr
 
 ![Screenshot from 2020-12-13 23-11-11](https://user-images.githubusercontent.com/54954455/102025612-dd7e4100-3da1-11eb-847e-247ba40205ce.png)
 
+## d) Kokeile hydraa johonkin uuteen maaliin.
 
+Kokeilen ajaa hydraa Metasploitable 2:n palveluihin ftp, ssh ja telnet komennolla: `hyrda -L users.txt -P wordlist.txt [ftp, ssh tai telnet]://192.168.56.101  
+-u -V -f`.
 
 
 
