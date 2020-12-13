@@ -508,9 +508,59 @@ https://github.com/Maximum-petteri/pen#h5
 
 ## c) Tee 5 tiivistettä eri ohjelmilla ja arvaa ne hashcatilla.
 
-Aloitetaan luomalla hashes.txt ja wordlist.txt tiedostot johon keräilen generoitua salasanatiivisteitä ja varsinaisia salasanoja.
-Seuraavaksi kokeilen tehdä MD5-tiivisteen md5sum-komennolla > echo "password" -n | md5sum.
+Aloitetaan luomalla hashes.txt ja wordlist.txt tiedostot johon keräilen generoitua salasanatiivisteitä ja varsinaisia salasaKoknoja.
+Seuraavaksi kokeilen tehdä MD5-tiivisteen md5sum-komennolla `echo "password" -n | md5sum`.
 
 ![Screenshot from 2020-12-13 22-43-34](https://user-images.githubusercontent.com/54954455/102024605-bd4b8380-3d9b-11eb-9135-a1af4a418e84.png)
+
+`-n` parametri poistaa echon ulostulosta rivinvaihdon jolloin md5sum on eheä ilman rivinvaihtoa.
+
+Ajan hashcatin komennolla `hashcat -m 0 -a 0 hashes.txt wordlist.txt --force`, jossa parametrit `-m 0` määrittää MD5 tiivisteen ja `-a 0` lukee tekstitiedostosta jokaisen rivin kandidaattina salasanalle. Joudun käyttämään `--force` parametria, koska vanhassa kannettavassa ei ole mitään näytönohjainta, jota hashcat voisi käyttää laskentaan.
+
+![Screenshot from 2020-12-13 22-44-56](https://user-images.githubusercontent.com/54954455/102024891-42836800-3d9d-11eb-9165-8ff1bab02016.png)
+
+Kokeilin perään vielä hitusen monimutkaisemman salasanan:
+
+![Screenshot from 2020-12-13 22-45-44](https://user-images.githubusercontent.com/54954455/102024992-cdfcf900-3d9d-11eb-937e-8cc5c7012880.png)
+
+Ajoin hashcatin samoilla parametreillä kuin ylempänä, ja eihän tuo salasana tuottanut sen enempää tuskaa.
+
+![Screenshot from 2020-12-13 22-47-08](https://user-images.githubusercontent.com/54954455/102025005-dfde9c00-3d9d-11eb-97a9-1e0917fbef14.png)
+
+Kokeillaan seuraavaksi tehdä salasana openssl-komennolla seuraavasti: `openssl passwd -1 -salt xyz password` jossa parametri `-1` tekee MD5 tiivisteen, ja `-salt` "suolaa" salasanatiivisteen lisäämällä `xyz` kirjainyhdistelmän tiivisteeseen, tosin tämä on helposti luettavissa suoraan tiivisteestä.
+Tarkistan vielä hashid-komennolla hashes.txt tiedoston että tämä löytää kahta eri tyyppiä tiivisteitä tiedostosta.
+
+![Screenshot from 2020-12-13 22-50-08](https://user-images.githubusercontent.com/54954455/102025202-284a8980-3d9f-11eb-8f8d-feb19d2dfb9f.png)
+
+Uusi tiiviste näyttäisi olevan tyyppiä MD5 Crypt, Cisco-IOS(MD5) tai FreeBSD MD5. Lunttaan sivustolta https://hashcat.net/wiki/doku.php?id=example_hashes mitä numeroa tulisi käyttää tämän tiivisteen purkamiseen ja kokeilen seuraavaa: `hashcat -m 500 -a 0 hashes.txt wordlist.txt --force`.
+
+![Screenshot from 2020-12-13 22-52-48](https://user-images.githubusercontent.com/54954455/102025338-d81ff700-3d9f-11eb-9d54-febd0145cf99.png)
+
+ja pienen hetken päästä tuokin on saatu auki:
+
+![Screenshot from 2020-12-13 22-52-31](https://user-images.githubusercontent.com/54954455/102025359-0c93b300-3da0-11eb-8ecb-c3ddf5f45f41.png)
+
+Seuraavaksi kokeillaan tehdä mkpasswd-komennolla vähän pidempi, 256 merkkiä pitkä salasanatiiviste: `mkpasswd --method=SHA-256 --stdin`.
+
+![Screenshot from 2020-12-13 22-58-16](https://user-images.githubusercontent.com/54954455/102025408-78761b80-3da0-11eb-991c-75f492202e7f.png)
+
+Katson hashid-komennolla että kyseiselle tiivisteelle annetaan tyyppi SHA-256 Crypt. Ajan hashcatin parametreilla `hashcat -m 7400 -a 0 hashes.txt wordlist.txt --force`, mutta tämäkään ei tuota mitään ongelmaa.
+
+![Screenshot from 2020-12-13 23-01-38](https://user-images.githubusercontent.com/54954455/102025494-fcc89e80-3da0-11eb-9779-6e97c91ff0af.png)
+
+Päätän sitten venyttää salasanatiivistettä 512 merkin pituiseksi:
+
+![Screenshot from 2020-12-13 23-02-07](https://user-images.githubusercontent.com/54954455/102025508-1b2e9a00-3da1-11eb-98f8-038ae7f7a3df.png)
+
+ja kun ajoin hashcatin parametrilla `-m 1800`, joka viittaa SHA-512 Crypt -tiivisteeseen sain vihdoin virheen:
+
+![Screenshot from 2020-12-13 23-05-20](https://user-images.githubusercontent.com/54954455/102025545-6052cc00-3da1-11eb-96e3-5d04bbc352e0.png)
+
+Hashcat antoi minulle linkin artikkeliin https://hashcat.net/wiki/doku.php?id=frequently_asked_questions#how_to_create_more_work_for_full_speed jonka nopeasti silmäilemällä päättelin että minulla ei ollut minun salasanakandidaattilistassa tarpeeksi salasanoja, joten kokeilin copy/pastea rockyou.txt -tiedostosta ensimmäiset pari sivua omaan wordlist-tiedostoon mukaan. Tämä auttoi.
+
+![Screenshot from 2020-12-13 23-11-11](https://user-images.githubusercontent.com/54954455/102025612-dd7e4100-3da1-11eb-847e-247ba40205ce.png)
+
+
+
 
 
