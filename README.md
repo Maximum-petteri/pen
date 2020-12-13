@@ -494,4 +494,23 @@ Laitetaan haavoittuvuus ajoon ja maali!
 
 ![Screenshot_2020-12-07_22-40-03](https://user-images.githubusercontent.com/54954455/101402990-3438d600-38dd-11eb-961f-171988dde953.png)
 
+# H6
+
+## a) Palauta kaikki. Laita tähän a-kohtaan linkki jokaiseen kotitehtäväraporttiisi.
+
+Helppoa, kaikki on tässä samassa readme-dokumentissa:
+
+https://github.com/Maximum-petteri/pen#h1
+https://github.com/Maximum-petteri/pen#h2
+https://github.com/Maximum-petteri/pen#h3
+https://github.com/Maximum-petteri/pen#h4
+https://github.com/Maximum-petteri/pen#h5
+
+## c) Tee 5 tiivistettä eri ohjelmilla ja arvaa ne hashcatilla.
+
+Aloitetaan luomalla hashes.txt ja wordlist.txt tiedostot johon keräilen generoitua salasanatiivisteitä ja varsinaisia salasanoja.
+Seuraavaksi kokeilen tehdä MD5-tiivisteen md5sum-komennolla > echo "password" -n | md5sum.
+
+![Screenshot from 2020-12-13 22-43-34](https://user-images.githubusercontent.com/54954455/102024605-bd4b8380-3d9b-11eb-9135-a1af4a418e84.png)
+
 
