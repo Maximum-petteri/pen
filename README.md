@@ -578,5 +578,24 @@ Lista parametreista:
 
 ![Screenshot from 2020-12-14 10-18-48](https://user-images.githubusercontent.com/54954455/102056957-dd0f9580-3df5-11eb-8997-793d41f8dcb9.png)
 
+## e) Kokeile hydraa omaan weppilomakkeeseen.
 
+
+
+## f) Tee oma sanalista itse tekemästäsi ja keksimästäsi weppisivusta.
+
+Kokeilin ajaa Cewl-komentoa keskeneräiselle weppisivulleni https://badloop.com seuraavanlaisesti: `cewl -a -w cewl_test.txt https://badloop.com`. Parametrit `-a` ottaa mukaan sivun metadatan ja `-w` kirjoittaa tuloksen tekstitiedostoon.
+Sivuillani on tällä hetkellä vain ansi-grafiikkaa mutta yksi mielenkiintoinen asia osui silmään käydessä läpi tuloksia:
+
+![Screenshot from 2020-12-14 10-35-19](https://user-images.githubusercontent.com/54954455/102058787-b868ed00-3df8-11eb-94ec-ad34747e5148.png)
+
+![Screenshot from 2020-12-14 10-40-29](https://user-images.githubusercontent.com/54954455/102058873-d5052500-3df8-11eb-8f02-1197f38c6329.png)
+
+Listassa näkyy sana **compiling**, joka ei esiinny kyseisen sivuston koodissa, vaan badloop.com:in alla olevan https://federalaudioreserve.com:in etusivulla,
+
+![Screenshot from 2020-12-14 10-42-31](https://user-images.githubusercontent.com/54954455/102059095-1a295700-3df9-11eb-9cd8-da9d9e8dfe67.png)
+
+Tämä johtunee siitä että cewl-komento oletuksena asettaa `-d` parametrin kakkoseksi, jolloin cewl löytää jollain logiikalla myös samassa osoitteessa asuvan alasivuston sisällön.
+
+![Screenshot from 2020-12-14 10-43-20](https://user-images.githubusercontent.com/54954455/102059367-7db38480-3df9-11eb-9734-73229b3a18ac.png)
 
