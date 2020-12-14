@@ -578,9 +578,26 @@ Lista parametreista:
 
 ![Screenshot from 2020-12-14 10-18-48](https://user-images.githubusercontent.com/54954455/102056957-dd0f9580-3df5-11eb-8997-793d41f8dcb9.png)
 
+
 ## e) Kokeile hydraa omaan weppilomakkeeseen.
 
+Yritän ajaa hydra-komentoa omaa tiedostopalvelinta vasten, johon olen luonut käyttäjän **user** salasanalla **password**. Katsoin hydran manuaalista että minun tulisi rakentaa http-post-form parametri tätä varten, joten katsoin tiedostopalvelimeltani millaisen POSTauksen selain tekee yrittäessään kirjautua sisään.
 
+![Screenshot from 2020-12-14 10-57-39](https://user-images.githubusercontent.com/54954455/102063835-37f9ba80-3dff-11eb-8d8b-89fe3f2426e7.png)
+
+tässä katson referer-osoiteen että tähän varmaan tulisi ottaa talteen tuo **/portal/**.
+
+![Screenshot from 2020-12-14 11-05-22](https://user-images.githubusercontent.com/54954455/102064026-77c0a200-3dff-11eb-85b2-4a8e12081830.png)
+
+Tässä tarkistan mitä tuo POST pitää sisällään noille kentille.
+
+![Screenshot from 2020-12-14 11-05-37](https://user-images.githubusercontent.com/54954455/102064060-83ac6400-3dff-11eb-8788-ce4503f42aed.png)
+
+rakennan seuraavanlaisen hyrda-komennon jolla yritän saada ensin onnistuneen kirjautumisen: `hydra -l user -p password 192.168.68.105 http-post-form "/portal/:account=^USER^&password=^PASS^&Login:error_msg=Authentication Failed!"`
+
+![Screenshot from 2020-12-14 11-31-09](https://user-images.githubusercontent.com/54954455/102064413-ee5d9f80-3dff-11eb-8f14-79b14a20b126.png)
+
+Tämä ilmeisesti ei toimi, enkä saa ilmoitusta tiedostopalvelimeltani epäonnistuneesta kirjautumisyrityksestä. Pyörittelin tätä hetken mutta en päässyt eteenpäin.
 
 ## f) Tee oma sanalista itse tekemästäsi ja keksimästäsi weppisivusta.
 
