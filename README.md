@@ -566,5 +566,17 @@ Hashcat antoi minulle linkin artikkeliin https://hashcat.net/wiki/doku.php?id=fr
 Kokeilen ajaa hydraa Metasploitable 2:n palveluihin ftp, ssh ja telnet komennolla: `hyrda -L users.txt -P wordlist.txt [ftp, ssh tai telnet]://192.168.56.101  
 -u -V -f`.
 
+Lista parametreista:
+
+`-L` käyttää tekstitiedoston rivejä käyttäjälistana.  
+`-P` lista salasanoille.  
+`-u` kiertää käyttäjälistan nimet, jotta ei tule peräkkäisiä yrityksiä samalle käyttäjälle.  
+`-f` lopettaa yrittämisen ensimmäiseen onnistumiseen.  
+`-V` näyttää ruudulla miten ohjelman ajaminen etenee.  
+
+![Screenshot from 2020-12-14 10-18-24](https://user-images.githubusercontent.com/54954455/102056925-d08b3d00-3df5-11eb-8611-f2d45393b6b8.png)
+
+![Screenshot from 2020-12-14 10-18-48](https://user-images.githubusercontent.com/54954455/102056957-dd0f9580-3df5-11eb-8997-793d41f8dcb9.png)
+
 
 
