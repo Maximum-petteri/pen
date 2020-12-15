@@ -616,3 +616,29 @@ Tämä johtunee siitä että cewl-komento oletuksena asettaa `-d` parametrin kak
 
 ![Screenshot from 2020-12-14 10-43-20](https://user-images.githubusercontent.com/54954455/102059367-7db38480-3df9-11eb-9734-73229b3a18ac.png)
 
+
+# Loppu
+
+Avasin kolme hashia salasana-tehtävässä:
+
+![Screenshot from 2020-12-15 15-17-13](https://user-images.githubusercontent.com/54954455/102232202-7e324500-3ef7-11eb-8998-532fc6015e87.png)
+
+![Screenshot from 2020-12-15 15-23-26](https://user-images.githubusercontent.com/54954455/102232212-81c5cc00-3ef7-11eb-8f53-119b9e02a1b6.png)
+
+![Screenshot from 2020-12-15 15-25-01](https://user-images.githubusercontent.com/54954455/102232218-84282600-3ef7-11eb-83b7-11f887598543.png)
+
+bcrypt salasana oli liian hidasta mun koneelle, ja noita muita en saanut auki.
+
+Secret.zipistä sain sen hashin ulos mutta john-komento ilmoitti että mulla on johnconffissa rivillä 540 joku virhe, jolloin en enää kerennyt korjaamaan tätä
+
+dockerilla pääsin ajamaan webbikauppaa, mutta en sen pidemmälle päässyt.
+
+Anselmissa onnistuin korkkaamaan kolmen käyttäjän salasanat, mutta en anselmin salasanaa:
+
+foo barista : salasana
+erkki : peruna
+maija : invulnerable
+
+![Screenshot from 2020-12-15 16-50-24](https://user-images.githubusercontent.com/54954455/102232251-8d18f780-3ef7-11eb-91a6-ac3cc87fde7e.png)
+![Screenshot from 2020-12-15 16-57-43](https://user-images.githubusercontent.com/54954455/102232259-8ee2bb00-3ef7-11eb-994a-d862beb9b927.png)
+
